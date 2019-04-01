@@ -26,7 +26,10 @@
   <h3>Tank list</h3>
   <ul class="tanks">
     <li *ngFor="let tank of tanks">
-      <span class=badge>{{tank.tank_id}}</span> {{tank.mark_of_mastery}}
+        <a routerLink="/tank/{{tank.tank_id}}">
+          Id: {{tank.tank_id}}
+        </a>
+        Mark of mastery level: {{tank.mark_of_mastery | masteryLevel }}
     </li>
   </ul>
 </div>

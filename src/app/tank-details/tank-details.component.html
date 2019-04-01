@@ -1,0 +1,20 @@
+<h2>
+  #{{this.id}} tank details
+</h2>
+
+<div *ngIf="tankDetals !== undefined">
+  <p>Id: {{this.id}}</p>
+  <p>Tag: {{tankDetals.tag}}</p>
+  <p>Name: {{tankDetals.name}}</p>
+  <p>Nation: {{tankDetals.nation}}</p>
+  <p>Tier: {{tankDetals.tier}}</p>
+  <p>Type: {{tankDetals.type}}</p>
+  <p>Description: {{tankDetals.description}}</p>
+  <p>Premium: {{tankDetals.is_premium}}</p>
+  <div *ngIf="!tankDetals.is_premium; else goldPrice">
+    <p>Price: {{tankDetals.price_credit}} credits</p>
+  </div>
+  <ng-template #goldPrice>
+    <p>Price: {{tankDetals.price_gold}} gold</p>
+  </ng-template>
+</div>

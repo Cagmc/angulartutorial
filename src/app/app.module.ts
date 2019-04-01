@@ -8,22 +8,27 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-// import { HeroesComponent } from './heroes/heroes.component';
-// import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-// import { DashboardComponent } from './dashboard/dashboard.component';
-// import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HeroesComponent } from './heroes/heroes.component';
+import { HeroDetailComponent } from './hero-detail/hero-detail.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TankopediaComponent } from './tankopedia/tankopedia.component';
+import { TankDetailsComponent } from './tank-details/tank-details.component';
+
+import { MasteryLevelPipe } from './mastery-level.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // HeroesComponent,
-    // HeroDetailComponent,
+    HeroesComponent,
+    HeroDetailComponent,
     MessagesComponent,
-    // DashboardComponent,
-    // HeroSearchComponent,
-    TankopediaComponent
+    DashboardComponent,
+    HeroSearchComponent,
+    TankopediaComponent,
+    TankDetailsComponent,
+    MasteryLevelPipe
   ],
   imports: [
     BrowserModule,

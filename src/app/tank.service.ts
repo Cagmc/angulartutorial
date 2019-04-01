@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 
-const applicationId = '';
+const applicationId = '28d8ac42be14e9cfec30e8d56b33c632';
 const baseUrl = 'https://api.worldoftanks.eu/wot/';
 
 @Injectable({
@@ -46,6 +46,17 @@ export class TankService {
   return this.http.get<QueryResponse<any>>(baseUrl + 'account/tanks/', options)
     .pipe(tap(result => console.log(result)));
  }
+
+ getTankDetails(id: number): Observable<QueryResponse<any>> {
+  const params = new HttpParams()
+  .set('application_id', applicationId)
+  .set('tank_id', id.toString());
+  console.info(id);
+  const options = { params };
+
+  return this.http.get<QueryResponse<any>>(baseUrl + 'encyclopedia/vehicles/', options)
+    .pipe(tap(result => console.log(result)));
+ }
 }
 
 // General
@@ -81,4 +92,17 @@ export class Fos {
 export class Tank {
   tank_id: number;
   mark_of_mastery: number;
+}
+
+// Tank details
+export class TankDetails {
+  name: string;
+  nation: string;
+  tier: number;
+  type: string;
+  description: string;
+  price_credit: number;
+  price_gold: number;
+  is_premium: boolean;
+  tag: string;
 }
