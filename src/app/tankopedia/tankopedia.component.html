@@ -1,0 +1,32 @@
+<p>
+  WoT Tankopedia
+</p>
+
+<div>
+  <h3>Search for accounts</h3>
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" value="cagm" />
+
+  <ul class="accounts">
+    <li *ngFor="let account of accounts$ | async">
+        <span class="badge">{{account.account_id}}</span> {{account.nickname}}
+        <button (click)="downloadAccountDetails(account.account_id)">Details</button>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="accDetails !== undefined">
+  <h3>Account Details</h3>
+  <p>Account Id: {{accDetails.account_id}}</p>
+  <p>Global rating: {{accDetails.global_rating}}</p>
+  <p>Username: {{accDetails.nickname}}</p>
+  <p>Created at: {{accDetails.created_at | date:'medium' }}</p>
+</div>
+
+<div *ngIf="tanks !== undefined">
+  <h3>Tank list</h3>
+  <ul class="tanks">
+    <li *ngFor="let tank of tanks">
+      <span class=badge>{{tank.tank_id}}</span> {{tank.mark_of_mastery}}
+    </li>
+  </ul>
+</div>
