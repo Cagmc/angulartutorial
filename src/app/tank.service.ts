@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 
-const applicationId = '28d8ac42be14e9cfec30e8d56b33c632';
+const applicationId = '';
 const baseUrl = 'https://api.worldoftanks.eu/wot/';
 
 @Injectable({
