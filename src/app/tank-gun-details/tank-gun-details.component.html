@@ -1,0 +1,17 @@
+<div *ngIf="isPage !== undefined && isPage === true">
+<p>
+  Gun details
+</p>
+</div>
+
+<div *ngIf="gunDetails !== undefined">
+  <ul>
+  <li>Id: {{gunDetails.module_id}}</li>
+  <li>Type: {{gunDetails.type}}</li>
+  <li>Name: {{gunDetails.name}}</li>
+  <li>Price: {{gunDetails.price_credit}}</li>
+  <li>Nation: {{gunDetails.nation}}</li>
+  <li>Tier: {{gunDetails.tier}}</li>
+  <li><img src="{{gunDetails.image}}" alt="gun_image_{{gunDetails.module_id}}"/></li>
+  </ul>
+</div>

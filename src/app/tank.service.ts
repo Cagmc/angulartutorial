@@ -51,10 +51,22 @@ export class TankService {
   const params = new HttpParams()
   .set('application_id', applicationId)
   .set('tank_id', id.toString());
-  console.info(id);
+
   const options = { params };
 
   return this.http.get<QueryResponse<any>>(baseUrl + 'encyclopedia/vehicles/', options)
+    .pipe(tap(result => console.log(result)));
+ }
+
+ getModuleDetails(id: number, type: string): Observable<QueryResponse<any>> {
+  const params = new HttpParams()
+  .set('application_id', applicationId)
+  .set('module_id', id.toString())
+  .set('type', type);
+
+  const options = { params };
+
+  return this.http.get<QueryResponse<any>>(baseUrl + 'encyclopedia/modules/', options)
     .pipe(tap(result => console.log(result)));
  }
 }
@@ -85,10 +97,6 @@ export class AccountDetails {
 }
 
 // Tank list
-export class Fos {
-
-}
-
 export class Tank {
   tank_id: number;
   mark_of_mastery: number;
@@ -105,4 +113,37 @@ export class TankDetails {
   price_gold: number;
   is_premium: boolean;
   tag: string;
+  suspensions: Array<number>[];
+  engines: Array<number>[];
+  guns: Array<number>[];
+  turrets: Array<number>[];
+  images: TankImages;
+}
+
+export class TankImages {
+  small_icon: string;
+  contour_icon: string;
+  big_icon: string;
+}
+
+// Gun details
+export class GunDetails {
+  name: string;
+  price_credit: number;
+  nation: string;
+  image: string;
+  tier: number;
+  module_id: number;
+  type: string;
+}
+
+// Module details
+export class ModuleDetails {
+  name: string;
+  price_credit: number;
+  nation: string;
+  image: string;
+  tier: number;
+  module_id: number;
+  type: string;
 }

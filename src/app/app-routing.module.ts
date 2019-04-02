@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 // import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { TankopediaComponent } from './tankopedia/tankopedia.component';
 import { TankDetailsComponent } from './tank-details/tank-details.component';
+import { TankGunDetailsComponent } from './tank-gun-details/tank-gun-details.component';
+import { TankModuleDetailsComponent } from './tank-module-details/tank-module-details.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tankopedia', pathMatch: 'full' },
@@ -13,7 +15,9 @@ const routes: Routes = [
   // { path: 'dashboard', component: DashboardComponent },
   // { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'tankopedia', component: TankopediaComponent },
-  { path: 'tank/:id', component: TankDetailsComponent }
+  { path: 'tank/:id', component: TankDetailsComponent },
+  { path: 'gun/:id', component: TankGunDetailsComponent },
+  { path: 'module/:type/:id', component: TankModuleDetailsComponent}
 ];
 
 @NgModule({

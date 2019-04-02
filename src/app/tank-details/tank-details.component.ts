@@ -9,8 +9,9 @@ import { TankService } from '../tank.service';
   styleUrls: ['./tank-details.component.scss']
 })
 export class TankDetailsComponent implements OnInit {
-  tankDetals: any;
+  tankDetails: any;
   id: number;
+  selectedModules: Array<SelectedModule>[];
 
   constructor(
     private route: ActivatedRoute,
@@ -22,7 +23,20 @@ export class TankDetailsComponent implements OnInit {
 
   downloadTankDetails() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.tankService.getTankDetails(this.id).subscribe(x => this.tankDetals = x.data[this.id]);
+    this.tankService.getTankDetails(this.id).subscribe(x => this.tankDetails = x.data[this.id]);
   }
 
+  selectModule(id: number, type: string): void {
+    alert(id);
+  }
+
+}
+
+class SelectedModule {
+  constructor(id: number, type: string) {
+    this.id = id;
+    this.type = type;
+  }
+  type: string;
+  id: number;
 }

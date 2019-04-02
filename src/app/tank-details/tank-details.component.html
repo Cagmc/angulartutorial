@@ -2,19 +2,64 @@
   #{{this.id}} tank details
 </h2>
 
-<div *ngIf="tankDetals !== undefined">
+<div *ngIf="tankDetails !== undefined">
   <p>Id: {{this.id}}</p>
-  <p>Tag: {{tankDetals.tag}}</p>
-  <p>Name: {{tankDetals.name}}</p>
-  <p>Nation: {{tankDetals.nation}}</p>
-  <p>Tier: {{tankDetals.tier}}</p>
-  <p>Type: {{tankDetals.type}}</p>
-  <p>Description: {{tankDetals.description}}</p>
-  <p>Premium: {{tankDetals.is_premium}}</p>
-  <div *ngIf="!tankDetals.is_premium; else goldPrice">
-    <p>Price: {{tankDetals.price_credit}} credits</p>
+  <p>Tag: {{tankDetails.tag}}</p>
+  <p>Name: {{tankDetails.name}}</p>
+  <p>Nation: {{tankDetails.nation}}</p>
+  <p>Tier: {{tankDetails.tier}}</p>
+  <p>Type: {{tankDetails.type}}</p>
+  <p>Description: {{tankDetails.description}}</p>
+  <p>Premium: {{tankDetails.is_premium}}</p>
+  <div *ngIf="!tankDetails.is_premium; else goldPrice">
+    <p>Price: {{tankDetails.price_credit}} credits</p>
   </div>
   <ng-template #goldPrice>
-    <p>Price: {{tankDetals.price_gold}} gold</p>
+    <p>Price: {{tankDetails.price_gold}} gold</p>
   </ng-template>
+  <p><img src="{{tankDetails.images.big_icon}}" alt="tank_image_{{this.id}}"/></p>
+
+  <h2>Guns</h2>
+  <ul>
+    <li *ngFor="let gun of tankDetails.guns">
+      <app-tank-module-details 
+        (click)="selectModule(gun, 'vehicleGun')" 
+        [id]="gun" 
+        [type]="'vehicleGun'">
+      </app-tank-module-details>
+    </li>
+  </ul>
+
+  <h2>Engines</h2>
+  <ul>
+    <li *ngFor="let engine of tankDetails.engines">
+      <app-tank-module-details 
+        (click)="selectModule(engine, 'vehicleEngine')" 
+        [id]="engine" 
+        [type]="'vehicleEngine'">
+      </app-tank-module-details>
+    </li>
+  </ul>
+
+  <h2>Turrets</h2>
+  <ul>
+    <li *ngFor="let turret of tankDetails.turrets">
+      <app-tank-module-details 
+        (click)="selectModule(turret, 'vehicleTurret')" 
+        [id]="turret" 
+        [type]="'vehicleTurret'">
+      </app-tank-module-details>
+    </li>
+  </ul>
+
+  <h2>Suspensions</h2>
+  <ul>
+    <li *ngFor="let suspension of tankDetails.suspensions">
+      <app-tank-module-details 
+        (click)="selectModule(suspension, 'vehicleChassis')" 
+        [id]="suspension" 
+        [type]="'vehicleChassis'">
+      </app-tank-module-details>
+    </li>
+  </ul>
 </div>

@@ -15,6 +15,8 @@ import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 import { TankopediaComponent } from './tankopedia/tankopedia.component';
 import { TankDetailsComponent } from './tank-details/tank-details.component';
+import { TankGunDetailsComponent } from './tank-gun-details/tank-gun-details.component';
+import { TankModuleDetailsComponent } from './tank-module-details/tank-module-details.component';
 
 import { MasteryLevelPipe } from './mastery-level.pipe';
 
@@ -28,7 +30,9 @@ import { MasteryLevelPipe } from './mastery-level.pipe';
     HeroSearchComponent,
     TankopediaComponent,
     TankDetailsComponent,
-    MasteryLevelPipe
+    MasteryLevelPipe,
+    TankGunDetailsComponent,
+    TankModuleDetailsComponent
   ],
   imports: [
     BrowserModule,
