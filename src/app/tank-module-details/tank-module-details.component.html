@@ -1,17 +1,19 @@
-<div *ngIf="isPage !== undefined && isPage === true">
-  <p>
-    Module details
-  </p>
+<div (click)="select()">
+  <div *ngIf="isPage !== undefined && isPage === true">
+    <p>
+      Module details
+    </p>
   </div>
-  
+    
   <div *ngIf="moduleDetails !== undefined">
-    <ul>
-      <li>Id: {{moduleDetails.module_id}}</li>
-      <li>Type: {{moduleDetails.type}}</li>
-      <li>Name: {{moduleDetails.name}}</li>
-      <li>Price: {{moduleDetails.price_credit}}</li>
-      <li>Nation: {{moduleDetails.nation}}</li>
-      <li>Tier: {{moduleDetails.tier}}</li>
-      <li><img src="{{moduleDetails.image}}" alt="gun_image_{{moduleDetails.module_id}}"/></li>
-    </ul>
+      <ul>
+        <li>Id: {{moduleDetails.module_id}}</li>
+        <li>Type: {{moduleDetails.type}}</li>
+        <li>Name: {{moduleDetails.name}}</li>
+        <li>Price: {{moduleDetails.price_credit}}</li>
+        <li>Nation: {{moduleDetails.nation}}</li>
+        <li>Tier: {{moduleDetails.tier}}</li>
+        <li><img src="{{moduleDetails.image}}" alt="gun_image_{{moduleDetails.module_id}}"/></li>
+      </ul>
+  </div>
 </div>

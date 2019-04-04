@@ -19,44 +19,64 @@
   </ng-template>
   <p><img src="{{tankDetails.images.big_icon}}" alt="tank_image_{{this.id}}"/></p>
 
-  <h2>Guns</h2>
+  <hr>
+
+  <h2 (click)="toogleSection(0)" class="collapsible">Selected modules</h2>
+  <div [hidden]="!displaySection[0]">
+  <span>Total price: {{totalPrice}}</span>
   <ul>
+    <li *ngFor="let module of selectedModules">
+      <span>{{module.name}}</span>
+    </li>
+  </ul>
+  </div>
+
+  <hr>
+
+  <h2 (click)="toogleSection(1)" class="collapsible">Guns</h2>
+  <ul [hidden]="!displaySection[1]">
     <li *ngFor="let gun of tankDetails.guns">
       <app-tank-module-details 
-        (click)="selectModule(gun, 'vehicleGun')" 
+        (selected)="onSelected($event)"
         [id]="gun" 
         [type]="'vehicleGun'">
       </app-tank-module-details>
     </li>
   </ul>
 
-  <h2>Engines</h2>
-  <ul>
+  <hr>
+
+  <h2 (click)="toogleSection(2)" class="collapsible">Engines</h2>
+  <ul [hidden]="!displaySection[2]">
     <li *ngFor="let engine of tankDetails.engines">
       <app-tank-module-details 
-        (click)="selectModule(engine, 'vehicleEngine')" 
+        (selected)="onSelected($event)"
         [id]="engine" 
         [type]="'vehicleEngine'">
       </app-tank-module-details>
     </li>
   </ul>
 
-  <h2>Turrets</h2>
-  <ul>
+  <hr>
+
+  <h2 (click)="toogleSection(3)" class="collapsible">Turrets</h2>
+  <ul [hidden]="!displaySection[3]">
     <li *ngFor="let turret of tankDetails.turrets">
       <app-tank-module-details 
-        (click)="selectModule(turret, 'vehicleTurret')" 
+        (selected)="onSelected($event)" 
         [id]="turret" 
         [type]="'vehicleTurret'">
       </app-tank-module-details>
     </li>
   </ul>
 
-  <h2>Suspensions</h2>
-  <ul>
+  <hr>
+
+  <h2 (click)="toogleSection(4)" class="collapsible">Suspensions</h2>
+  <ul [hidden]="!displaySection[4]">
     <li *ngFor="let suspension of tankDetails.suspensions">
       <app-tank-module-details 
-        (click)="selectModule(suspension, 'vehicleChassis')" 
+        (selected)="onSelected($event)" 
         [id]="suspension" 
         [type]="'vehicleChassis'">
       </app-tank-module-details>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TankService, ModuleDetails } from '../tank.service';
@@ -11,6 +11,7 @@ import { TankService, ModuleDetails } from '../tank.service';
 export class TankModuleDetailsComponent implements OnInit {
   @Input() id: number;
   @Input() type: string;
+  @Output() selected = new EventEmitter<ModuleDetails>();
   moduleDetails: ModuleDetails;
   isPage: boolean;
 
@@ -29,6 +30,10 @@ export class TankModuleDetailsComponent implements OnInit {
       this.isPage = true;
     }
     this.tankService.getModuleDetails(this.id, this.type).subscribe(x => this.moduleDetails = x.data[this.id]);
+  }
+
+  select(): void {
+    this.selected.emit(this.moduleDetails);
   }
 
 }
