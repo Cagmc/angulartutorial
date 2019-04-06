@@ -1,6 +1,29 @@
-<h1>{{ title }}</h1>
-<nav>
-    <a routerLink="/tankopedia">Tankopedia</a>
+<div class="jumbotron text-center" style="margin-bottom:0">
+    <h1>{{ title }}</h1>
+    <p>Having fun with Angular, Bootstrap, Azure and Worl of Tanks</p>
+</div>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" href="#">Tankopedia</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/tankopedia">Tankopedia</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+    </div>
 </nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+
+<div class="container">
+    <router-outlet></router-outlet>
+    <app-messages></app-messages>
+</div>

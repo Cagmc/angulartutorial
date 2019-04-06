@@ -1,31 +1,53 @@
-<p>
-  WoT Tankopedia
-</p>
+<h1>
+  Accounts
+</h1>
 
 <div>
   <h3>Search for accounts</h3>
   <input #searchBox id="search-box" (input)="search(searchBox.value)" value="cagm" />
 
-  <ul class="accounts">
-    <li *ngFor="let account of accounts$ | async">
+  <ul class="list-group">
+    <li *ngFor="let account of accounts$ | async" class="list-group-item">
         <span class="badge">{{account.account_id}}</span> {{account.nickname}}
-        <button (click)="downloadAccountDetails(account.account_id)">Details</button>
+        <button (click)="downloadAccountDetails(account.account_id)" class="btn btn-primary">Details</button>
     </li>
   </ul>
 </div>
 
 <div *ngIf="accDetails !== undefined">
   <h3>Account Details</h3>
-  <p>Account Id: {{accDetails.account_id}}</p>
-  <p>Global rating: {{accDetails.global_rating}}</p>
-  <p>Username: {{accDetails.nickname}}</p>
-  <p>Created at: {{accDetails.created_at | date:'medium' }}</p>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Key</th>
+        <th scope="col">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Account Id</th>
+        <td>{{accDetails.account_id}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Global rating</th>
+        <td>{{accDetails.global_rating}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Username</th>
+        <td>{{accDetails.nickname}}</td>
+      </tr>
+      <tr>
+        <th scope="row">Created at</th>
+        <td>{{accDetails.created_at | date:'medium' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 
 <div *ngIf="tanks !== undefined">
   <h3>Tank list</h3>
-  <ul class="tanks">
-    <li *ngFor="let tank of tanks">
+  <ul class="list-group">
+    <li *ngFor="let tank of tanks" class="list-group-item">
         <a routerLink="/tank/{{tank.tank_id}}">
           Id: {{tank.tank_id}}
         </a>

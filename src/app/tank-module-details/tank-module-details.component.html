@@ -4,16 +4,34 @@
       Module details
     </p>
   </div>
-    
-  <div *ngIf="moduleDetails !== undefined">
-      <ul>
-        <li>Id: {{moduleDetails.module_id}}</li>
-        <li>Type: {{moduleDetails.type}}</li>
-        <li>Name: {{moduleDetails.name}}</li>
-        <li>Price: {{moduleDetails.price_credit}}</li>
-        <li>Nation: {{moduleDetails.nation}}</li>
-        <li>Tier: {{moduleDetails.tier}}</li>
-        <li><img src="{{moduleDetails.image}}" alt="gun_image_{{moduleDetails.module_id}}"/></li>
-      </ul>
+
+  <div *ngIf="moduleDetails !== undefined" class="list-group">
+    <div class="row">
+      <div class="col-2">Id</div>
+      <div class="col-10">{{moduleDetails.module_id}}</div>
+    </div>
+    <div class="row">
+      <div class="col-2">Type</div>
+      <div class="col-10">{{moduleDetails.type}}</div>
+    </div>
+    <div class="row">
+      <div class="col-2">Name</div>
+      <div class="col-10">{{moduleDetails.name}}</div>
+    </div>
+    <div class="row">
+      <div class="col-2">Price</div>
+      <div class="col-10">{{moduleDetails.price_credit}} credits</div>
+    </div>
+    <div class="row">
+      <div class="col-2">Nation</div>
+      <div class="col-10">{{moduleDetails.nation}}</div>
+    </div>
+    <div class="row">
+      <div class="col-2">Tier</div>
+      <div class="col-10">{{moduleDetails.tier}}</div>
+    </div>
+    <div class="row">
+      <div class="col-12"><img class="rounded" src="{{moduleDetails.image}}" alt="gun_image_{{moduleDetails.module_id}}"/></div>
+    </div>
   </div>
 </div>

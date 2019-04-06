@@ -1,45 +1,83 @@
-<h2>
-  #{{this.id}} tank details
-</h2>
+<div class="jumbotron">
+  <h1>{{tankDetails.name}}</h1>
+  <p>You can check here the selected tank's details and available modules</p>
+</div>
 
 <div *ngIf="tankDetails !== undefined">
-  <p>Id: {{this.id}}</p>
-  <p>Tag: {{tankDetails.tag}}</p>
-  <p>Name: {{tankDetails.name}}</p>
-  <p>Nation: {{tankDetails.nation}}</p>
-  <p>Tier: {{tankDetails.tier}}</p>
-  <p>Type: {{tankDetails.type}}</p>
-  <p>Description: {{tankDetails.description}}</p>
-  <p>Premium: {{tankDetails.is_premium}}</p>
+  <div class="row">
+    <div class="col-2">Id</div>
+    <div class="col-10">{{this.id}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Tag</div>
+    <div class="col-10">{{tankDetails.tag}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Name</div>
+    <div class="col-10">{{tankDetails.name}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Nation</div>
+    <div class="col-10">{{tankDetails.nation}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Tier</div>
+    <div class="col-10">{{tankDetails.tier}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Type</div>
+    <div class="col-10">{{tankDetails.type}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Description</div>
+    <div class="col-10">{{tankDetails.description}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2">Premium</div>
+    <div class="col-10">{{tankDetails.is_premium}}</div>
+  </div>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-10"></div>
+  </div>
   <div *ngIf="!tankDetails.is_premium; else goldPrice">
-    <p>Price: {{tankDetails.price_credit}} credits</p>
+    <div class="row">
+      <div class="col-2">Price</div>
+      <div class="col-10">{{tankDetails.price_credit}} credits</div>
+    </div>
   </div>
   <ng-template #goldPrice>
-    <p>Price: {{tankDetails.price_gold}} gold</p>
+    <div class="row">
+      <div class="col-2">Price</div>
+      <div class="col-10">{{tankDetails.price_gold}} gold</div>
+    </div>
   </ng-template>
-  <p><img src="{{tankDetails.images.big_icon}}" alt="tank_image_{{this.id}}"/></p>
+  <div class="row">
+    <div class="col-12"><img class="rounded" src="{{tankDetails.images.big_icon}}" alt="tank_image_{{this.id}}" />
+    </div>
+  </div>
 
   <hr>
 
   <h2 (click)="toogleSection(0)" class="collapsible">Selected modules</h2>
   <div [hidden]="!displaySection[0]">
-  <span>Total price: {{totalPrice}}</span>
-  <ul>
-    <li *ngFor="let module of selectedModules">
-      <span>{{module.name}}</span>
-    </li>
-  </ul>
+    <div class=row>
+      <div class="col-2">Total price</div>
+      <div class="col-10">{{totalPrice}} credits</div>
+    </div>
+    <ul class="list-group">
+      <li *ngFor="let module of selectedModules" class="list-group-item">
+        {{module.name}}
+      </li>
+    </ul>
   </div>
 
   <hr>
 
   <h2 (click)="toogleSection(1)" class="collapsible">Guns</h2>
-  <ul [hidden]="!displaySection[1]">
-    <li *ngFor="let gun of tankDetails.guns">
-      <app-tank-module-details 
-        (selected)="onSelected($event)"
-        [id]="gun" 
-        [type]="'vehicleGun'">
+  <ul [hidden]="!displaySection[1]" class="list-group">
+    <li *ngFor="let gun of tankDetails.guns" class="list-group-item">
+      <app-tank-module-details (selected)="onSelected($event)" [id]="gun" [type]="'vehicleGun'">
       </app-tank-module-details>
     </li>
   </ul>
@@ -47,12 +85,9 @@
   <hr>
 
   <h2 (click)="toogleSection(2)" class="collapsible">Engines</h2>
-  <ul [hidden]="!displaySection[2]">
-    <li *ngFor="let engine of tankDetails.engines">
-      <app-tank-module-details 
-        (selected)="onSelected($event)"
-        [id]="engine" 
-        [type]="'vehicleEngine'">
+  <ul [hidden]="!displaySection[2]" class="list-group">
+    <li *ngFor="let engine of tankDetails.engines" class="list-group-item">
+      <app-tank-module-details (selected)="onSelected($event)" [id]="engine" [type]="'vehicleEngine'">
       </app-tank-module-details>
     </li>
   </ul>
@@ -60,12 +95,9 @@
   <hr>
 
   <h2 (click)="toogleSection(3)" class="collapsible">Turrets</h2>
-  <ul [hidden]="!displaySection[3]">
-    <li *ngFor="let turret of tankDetails.turrets">
-      <app-tank-module-details 
-        (selected)="onSelected($event)" 
-        [id]="turret" 
-        [type]="'vehicleTurret'">
+  <ul [hidden]="!displaySection[3]" class="list-group">
+    <li *ngFor="let turret of tankDetails.turrets" class="list-group-item">
+      <app-tank-module-details (selected)="onSelected($event)" [id]="turret" [type]="'vehicleTurret'">
       </app-tank-module-details>
     </li>
   </ul>
@@ -73,12 +105,9 @@
   <hr>
 
   <h2 (click)="toogleSection(4)" class="collapsible">Suspensions</h2>
-  <ul [hidden]="!displaySection[4]">
-    <li *ngFor="let suspension of tankDetails.suspensions">
-      <app-tank-module-details 
-        (selected)="onSelected($event)" 
-        [id]="suspension" 
-        [type]="'vehicleChassis'">
+  <ul [hidden]="!displaySection[4]" class="list-group">
+    <li *ngFor="let suspension of tankDetails.suspensions" class="list-group-item">
+      <app-tank-module-details (selected)="onSelected($event)" [id]="suspension" [type]="'vehicleChassis'">
       </app-tank-module-details>
     </li>
   </ul>
