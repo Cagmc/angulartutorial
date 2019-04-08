@@ -1,0 +1,5 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/c1aa563c-669a-43f8-b5b5-3c207d7b23e0/resourceGroups/tankopedia/providers/Microsoft.Web/sites/angulartankopedia",
+    "appService.deploySubpath": "dist\\angulartutorial",
+    "editor.formatOnSave": true
+}
