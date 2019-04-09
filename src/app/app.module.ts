@@ -20,6 +20,12 @@ import { TankGunDetailsComponent } from './tank-gun-details/tank-gun-details.com
 import { TankModuleDetailsComponent } from './tank-module-details/tank-module-details.component';
 
 import { MasteryLevelPipe } from './mastery-level.pipe';
+import { UserService } from './services/user.service';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/reducers/app.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { UserEffects } from './store/effects/user.effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 
 @NgModule({
   declarations: [
@@ -41,11 +47,14 @@ import { MasteryLevelPipe } from './mastery-level.pipe';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    StoreModule.forRoot(appReducers),
+    EffectsModule.forRoot([UserEffects]),
+    StoreRouterConnectingModule.forRoot({ stateKey: 'router' })
     /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )*/
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,7 +5,13 @@ import { of } from 'rxjs';
 import { switchMap, map, withLatestFrom } from 'rxjs/operators';
 
 import { IAppState } from '../state/app.state';
-import { GetUserSuccess, EUserActions, GetUsersSuccess, GetUser, GetUsers } from '../actions/user.actions';
+import {
+    GetUsersSuccess,
+    EUserActions,
+    GetUserSuccess,
+    GetUser,
+    GetUsers
+} from '../actions/user.actions';
 import { UserService } from '../../services/user.service';
 import { IUserHttp } from '../../models/http-models/user-http.interface';
 import { selectUserList } from '../selectors/user.selector';
@@ -23,16 +29,16 @@ export class UserEffects {
         })
     );
 
-@Effect()
-getUsers$ = this._actions$.pipe(
-    ofType<GetUsers>(EUserActions.GetUsers),
-    switchMap(() => this._userService.getUsers()),
-    switchMap((userHttp: IUserHttp) => of(new GetUserSuccess(userHttp.users)))
-);
+    @Effect()
+    getUsers$ = this._actions$.pipe(
+        ofType<GetUsers>(EUserActions.GetUsers),
+        switchMap(() => this._userService.getUsers()),
+        switchMap((userHttp: IUserHttp) => of(new GetUsersSuccess(userHttp.users)))
+    );
 
-constructor(
-    private _userService: UserService,
-    private _actions$: Actions,
-    private _store: Store<IAppState>
-    ) {}
+    constructor(
+        private _userService: UserService,
+        private _actions$: Actions,
+        private _store: Store<IAppState>
+    ) { }
 }
