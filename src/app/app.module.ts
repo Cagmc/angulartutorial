@@ -26,9 +26,17 @@ import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { UsersComponent as UsersContainerComponent } from './containers/users/users.component';
+import { UsersComponent } from './components/users/users.component';
+import { UserComponent } from './containers/user/user.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
 
 @NgModule({
   declarations: [
+    UsersContainerComponent,
+    UsersComponent,
+    UserComponent,
+    UserDetailsComponent,
     AppComponent,
     HeroesComponent,
     HeroDetailComponent,
