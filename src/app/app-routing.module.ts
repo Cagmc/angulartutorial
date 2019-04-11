@@ -8,6 +8,8 @@ import { TankopediaComponent } from './tankopedia/tankopedia.component';
 import { TankDetailsComponent } from './tank-details/tank-details.component';
 import { TankGunDetailsComponent } from './tank-gun-details/tank-gun-details.component';
 import { TankModuleDetailsComponent } from './tank-module-details/tank-module-details.component';
+import { UsersComponent } from './containers/users/users.component';
+import { UserComponent } from './containers/user/user.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tankopedia', pathMatch: 'full' },
@@ -17,7 +19,9 @@ const routes: Routes = [
   { path: 'tankopedia', component: TankopediaComponent },
   { path: 'tank/:id', component: TankDetailsComponent },
   { path: 'gun/:id', component: TankGunDetailsComponent },
-  { path: 'module/:type/:id', component: TankModuleDetailsComponent}
+  { path: 'module/:type/:id', component: TankModuleDetailsComponent },
+  { path: 'users', component: UsersComponent },
+  { path: 'user/:id', component: UserComponent },
 ];
 
 @NgModule({
