@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TankService, ModuleDetails, QueryResponse, TankDetails } from '../tank.service';
+import { TankService, ModuleDetails, QueryResponse, TankDetails } from '../../services/tank.service';
 
 @Component({
   selector: 'app-tank-details',
@@ -51,6 +51,6 @@ export class TankDetailsComponent implements OnInit {
   }
 
   toogleSection(index: number): void {
-    this.displaySection[index] = ! this.displaySection[index];
+    this.displaySection[index] = !this.displaySection[index];
   }
 }

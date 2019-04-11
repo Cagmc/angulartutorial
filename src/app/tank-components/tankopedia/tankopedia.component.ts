@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
-import { TankService, Account, AccountDetails, Tank } from '../tank.service';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { TankService, Account, AccountDetails, Tank } from '../../services/tank.service';
 
 @Component({
   selector: 'app-tankopedia',

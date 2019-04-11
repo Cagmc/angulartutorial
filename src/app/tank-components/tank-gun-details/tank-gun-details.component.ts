@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TankService, GunDetails } from '../tank.service';
+import { TankService, GunDetails } from '../../services/tank.service';
 
 @Component({
   selector: 'app-tank-gun-details',
@@ -17,16 +17,16 @@ export class TankGunDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private tankService: TankService) { }
 
-    ngOnInit() {
-      this.downloadGunDetails();
-    }
+  ngOnInit() {
+    this.downloadGunDetails();
+  }
 
-    downloadGunDetails(): void {
-      if (this.id === undefined) {
-        this.id = +this.route.snapshot.paramMap.get('id');
-        this.isPage = true;
-      }
-      this.tankService.getModuleDetails(this.id, 'vehicleGun').subscribe(x => this.gunDetails = x.data[this.id]);
+  downloadGunDetails(): void {
+    if (this.id === undefined) {
+      this.id = +this.route.snapshot.paramMap.get('id');
+      this.isPage = true;
     }
+    this.tankService.getModuleDetails(this.id, 'vehicleGun').subscribe(x => this.gunDetails = x.data[this.id]);
+  }
 
 }

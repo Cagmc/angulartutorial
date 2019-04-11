@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TankService, ModuleDetails } from '../tank.service';
+import { TankService, ModuleDetails } from '../../services/tank.service';
 
 @Component({
   selector: 'app-tank-module-details',

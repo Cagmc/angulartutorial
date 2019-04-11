@@ -11,15 +11,17 @@ import { Router } from '@angular/router';
     styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-    users$ = this._store.pipe(select(selectUserList));
+    users$ = this.store.pipe(select(selectUserList));
 
-    constructor(private _store: Store<IAppState>, private _router: Router) { }
+    constructor(
+        private store: Store<IAppState>,
+        private router: Router) { }
 
     ngOnInit() {
-        this._store.dispatch(new GetUsers());
+        this.store.dispatch(new GetUsers());
     }
 
     navigateToUser(id: number) {
-        this._router.navigate(['user', id]);
+        this.router.navigate(['user', id]);
     }
 }

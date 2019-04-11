@@ -11,14 +11,14 @@ import { GetUser } from '../../store/actions/user.actions';
     styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-    user$ = this._store.pipe(select(selectSelectedUser));
+    user$ = this.store.pipe(select(selectSelectedUser));
 
     constructor(
-        private _store: Store<IAppState>,
-        private _route: ActivatedRoute
+        private store: Store<IAppState>,
+        private route: ActivatedRoute
     ) { }
 
     ngOnInit() {
-        this._store.dispatch(new GetUser(this._route.snapshot.params.id));
+        this.store.dispatch(new GetUser(this.route.snapshot.params.id));
     }
 }

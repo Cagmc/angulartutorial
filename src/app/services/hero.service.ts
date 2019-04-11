@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Hero } from './hero';
+import { Hero } from '../models/hero.interface';
 
 import { MessageService } from './message.service';
 
@@ -63,7 +63,7 @@ export class HeroService {
   }
 
   searchHeroes(term: string): Observable<Hero[]> {
-    if (!term.trim()){
+    if (!term.trim()) {
       return of([]);
     }
 
@@ -77,7 +77,7 @@ export class HeroService {
     this.messageService.add(`HeroService: ${message}`);
   }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
 

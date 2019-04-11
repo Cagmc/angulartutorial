@@ -9,17 +9,17 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
-import { HeroDetailComponent } from './hero-detail/hero-detail.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroSearchComponent } from './hero-search/hero-search.component';
+import { HeroesComponent } from './tourofheroes-components/heroes/heroes.component';
+import { HeroDetailComponent } from './tourofheroes-components/hero-detail/hero-detail.component';
+import { DashboardComponent } from './tourofheroes-components/dashboard/dashboard.component';
+import { HeroSearchComponent } from './tourofheroes-components/hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
-import { TankopediaComponent } from './tankopedia/tankopedia.component';
-import { TankDetailsComponent } from './tank-details/tank-details.component';
-import { TankGunDetailsComponent } from './tank-gun-details/tank-gun-details.component';
-import { TankModuleDetailsComponent } from './tank-module-details/tank-module-details.component';
+import { TankopediaComponent } from './tank-components/tankopedia/tankopedia.component';
+import { TankDetailsComponent } from './tank-components/tank-details/tank-details.component';
+import { TankGunDetailsComponent } from './tank-components/tank-gun-details/tank-gun-details.component';
+import { TankModuleDetailsComponent } from './tank-components/tank-module-details/tank-module-details.component';
 
-import { MasteryLevelPipe } from './mastery-level.pipe';
+import { MasteryLevelPipe } from './pipes/mastery-level.pipe';
 import { UserService } from './services/user.service';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
