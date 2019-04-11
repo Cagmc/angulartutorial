@@ -1,7 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TankService, ModuleDetails, QueryResponse, TankDetails } from '../../services/tank.service';
+import { TankService } from '../../services/tank.service';
+import { ModuleDetails } from '../../models/tank-models/module-details.interface';
+import { QueryResponse } from '../../models/tank-models/query-response.interface';
+import { TankDetails } from '../../models/tank-models/tank-details.interface';
 
 @Component({
   selector: 'app-tank-details',

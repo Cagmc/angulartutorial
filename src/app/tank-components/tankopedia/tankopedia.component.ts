@@ -3,7 +3,10 @@ import { Observable, of, Subject } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { TankService, Account, AccountDetails, Tank } from '../../services/tank.service';
+import { TankService } from '../../services/tank.service';
+import { Account } from '../../models/tank-models/account.interface';
+import { AccountDetails } from '../../models/tank-models/account-details.interface';
+import { Tank } from '../../models/tank-models/tank.interface';
 
 @Component({
   selector: 'app-tankopedia',

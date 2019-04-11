@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { TankService, GunDetails } from '../../services/tank.service';
+import { TankService } from '../../services/tank.service';
+import { GunDetails } from '../../models/tank-models/gun-details.interface';
 
 @Component({
   selector: 'app-tank-gun-details',
