@@ -1,9 +1,11 @@
 <div class="jumbotron">
-  <h1>{{tankDetails.name}}</h1>
+  <div *ngIf="tankDetails !== undefined && tankDetails !== null">
+    <h1>{{tankDetails.name}}</h1>
+  </div>
   <p>You can check here the selected tank's details and available modules</p>
 </div>
 
-<div *ngIf="tankDetails !== undefined">
+<div *ngIf="tankDetails !== undefined && tankDetails !== null">
   <div class="row">
     <div class="col-2">Id</div>
     <div class="col-10">{{this.id}}</div>

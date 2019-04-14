@@ -10,8 +10,8 @@ import { Tank } from '../../models/tank-models/tank.interface';
 
 import { IAppState } from '../../store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { GetAccounts, GetAccount } from '../../store/actions/tank.actions';
-import { selectSelectedAccount } from '../../store/selectors/tank.selector';
+import { GetAccounts, GetAccount, GetTanks } from '../../store/actions/tank.actions';
+import { selectSelectedAccount, selectTankList } from '../../store/selectors/tank.selector';
 
 @Component({
   selector: 'app-tankopedia',
@@ -46,10 +46,11 @@ export class TankopediaComponent implements OnInit {
   }
 
   downloadAccountDetails(accountId: number): void {
-    // this.tankService.getAccountDetails(accountId).subscribe(x => this.accDetails = x.data[accountId]);
     this.store.dispatch(new GetAccount(accountId));
     this.store.pipe(select(selectSelectedAccount)).subscribe(result => this.accDetails = result);
-    this.tankService.getTanks(accountId).subscribe(x => this.tanks = x.data[accountId]);
+
+    this.store.dispatch(new GetTanks(accountId));
+    this.store.pipe(select(selectTankList)).subscribe(result => this.tanks = result);
   }
 
 }

@@ -15,6 +15,11 @@ export const selectSelectedAccount = createSelector(
     (state: ITankState) => state.selectedAccount
 );
 
+export const selectTankList = createSelector(
+    selectTanks,
+    (state: ITankState) => state.tanks
+);
+
 export const selectSelectedTank = createSelector(
     selectTanks,
     (state: ITankState) => state.selectedTank

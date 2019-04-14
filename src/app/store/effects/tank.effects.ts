@@ -19,32 +19,50 @@ import {
     GetTanksSuccess
 } from '../actions/tank.actions';
 import { TankService } from '../../services/tank.service';
-import { IUserHttp } from '../../models/http-models/user-http.interface';
 import { QueryResponse } from '../../models/tank-models/query-response.interface';
 import { AccountDetails } from '../../models/tank-models/account-details.interface';
 import { Account } from '../../models/tank-models/account.interface';
+import { Tank } from '../../models/tank-models/tank.interface';
 import {
     selectSelectedTank,
     selectAccountList,
     selectGunList,
     selectSelectedAccount,
 } from '../selectors/tank.selector';
+import { TankDetails } from 'src/app/models/tank-models/tank-details.interface';
 
 @Injectable()
 export class TankEffects {
     @Effect()
-    /*getAccounts$ = this._actions$.pipe(
+    getAccounts$ = this.actions$.pipe(
         ofType<GetAccounts>(ETankActions.GetAccounts),
         map(action => action.payload),
-        switchMap((filter) => this._tankService.getAccounts(filter, 10)),
+        switchMap((filter) => this.tankService.getAccounts(filter, 10)),
         switchMap((accounts: QueryResponse<Account[]>) => of(new GetAccountsSuccess(accounts.data)))
-    );*/
+    );
 
+    @Effect()
     getAccount$ = this.actions$.pipe(
         ofType<GetAccount>(ETankActions.GetAccount),
         map(action => action.payload),
         switchMap((filter) => this.tankService.getAccountDetails(filter)),
         switchMap((account: AccountDetails) => of(new GetAccountSuccess(account)))
+    );
+
+    @Effect()
+    getTanks$ = this.actions$.pipe(
+        ofType<GetTanks>(ETankActions.GetTanks),
+        map(action => action.payload),
+        switchMap((filter) => this.tankService.getTanks(filter)),
+        switchMap((tanks: Tank[]) => of(new GetTanksSuccess(tanks)))
+    );
+
+    @Effect()
+    getTank$ = this.actions$.pipe(
+        ofType<GetTank>(ETankActions.GetTank),
+        map(action => action.payload),
+        switchMap((filter) => this.tankService.getTankDetails(filter)),
+        switchMap((tank: TankDetails) => of(new GetTankSuccess(tank)))
     );
 
     constructor(

@@ -1,9 +1,14 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { IAppState } from '../../store/state/app.state';
+import { Store, select } from '@ngrx/store';
+import { catchError, map, tap } from 'rxjs/operators';
+
+import { GetTank } from '../../store/actions/tank.actions';
+import { selectSelectedTank } from '../../store/selectors/tank.selector';
 import { TankService } from '../../services/tank.service';
 import { ModuleDetails } from '../../models/tank-models/module-details.interface';
-import { QueryResponse } from '../../models/tank-models/query-response.interface';
 import { TankDetails } from '../../models/tank-models/tank-details.interface';
 
 @Component({
@@ -12,7 +17,7 @@ import { TankDetails } from '../../models/tank-models/tank-details.interface';
   styleUrls: ['./tank-details.component.scss']
 })
 export class TankDetailsComponent implements OnInit {
-  tankDetails: TankDetails;
+  tankDetails: TankDetails = null;
   id: number;
   selectedModules: Array<ModuleDetails> = new Array<ModuleDetails>();
   totalPrice: number;
@@ -20,6 +25,7 @@ export class TankDetailsComponent implements OnInit {
   displaySection: Array<boolean> = new Array<boolean>();
 
   constructor(
+    private store: Store<IAppState>,
     private route: ActivatedRoute,
     private tankService: TankService) { }
 
@@ -29,11 +35,15 @@ export class TankDetailsComponent implements OnInit {
 
   downloadTankDetails() {
     this.id = +this.route.snapshot.paramMap.get('id');
-    this.tankService.getTankDetails(this.id).subscribe(x => this.onDownloaded(x));
+
+    this.store.dispatch(new GetTank(this.id));
+    this.store.pipe(select(selectSelectedTank))
+      .subscribe((result) => { this.tankDetails = result; });
   }
 
-  onDownloaded(response: QueryResponse<any>) {
-    this.tankDetails = response.data[this.id];
+  onDownloaded(result: TankDetails) {
+    console.log(result);
+    this.tankDetails = result;
     this.totalPrice = this.tankDetails.price_credit;
   }
 
