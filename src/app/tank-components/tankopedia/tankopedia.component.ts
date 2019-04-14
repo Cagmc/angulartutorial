@@ -20,9 +20,8 @@ import { selectSelectedAccount } from '../../store/selectors/tank.selector';
 })
 export class TankopediaComponent implements OnInit {
   accounts$: Observable<Account[]>;
-  accDetails$: Observable<AccountDetails> = this.store.pipe(select(selectSelectedAccount));
+  accDetails: AccountDetails;
   tanks: Tank[];
-  accountId: number;
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -47,10 +46,9 @@ export class TankopediaComponent implements OnInit {
   }
 
   downloadAccountDetails(accountId: number): void {
-    this.accountId = accountId;
     // this.tankService.getAccountDetails(accountId).subscribe(x => this.accDetails = x.data[accountId]);
     this.store.dispatch(new GetAccount(accountId));
-    // this.store.pipe(select(selectSelectedAccount)).subscribe(result => this.accDetails = result[accountId]);
+    this.store.pipe(select(selectSelectedAccount)).subscribe(result => this.accDetails = result);
     this.tankService.getTanks(accountId).subscribe(x => this.tanks = x.data[accountId]);
   }
 

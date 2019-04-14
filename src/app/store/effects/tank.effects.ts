@@ -44,7 +44,7 @@ export class TankEffects {
         ofType<GetAccount>(ETankActions.GetAccount),
         map(action => action.payload),
         switchMap((filter) => this.tankService.getAccountDetails(filter)),
-        switchMap((accounts: QueryResponse<AccountDetails>) => of(new GetAccountSuccess(accounts.data)))
+        switchMap((account: AccountDetails) => of(new GetAccountSuccess(account)))
     );
 
     constructor(

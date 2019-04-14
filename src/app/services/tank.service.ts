@@ -28,18 +28,15 @@ export class TankService {
     // .pipe(tap(result => console.log(result)));
   }
 
-  getAccountDetails(accountId: number): Observable<QueryResponse<AccountDetails>> {
-    console.info(accountId);
+  getAccountDetails(accountId: number): Observable<AccountDetails> {
     const params = new HttpParams()
       .set('application_id', applicationId)
       .set('account_id', accountId.toString());
 
     const options = { params };
 
-    this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options)
-      .subscribe(r => console.info(r));
-
-    return this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options);
+    return this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options)
+      .pipe(map(asdf => asdf.data[accountId]));
   }
 
   getTanks(accountId: number): Observable<QueryResponse<any>> {
@@ -75,4 +72,8 @@ export class TankService {
     return this.http.get<QueryResponse<any>>(baseUrl + 'encyclopedia/modules/', options)
       .pipe(tap(result => console.log(result)));
   }
+}
+
+export class Lolz {
+
 }

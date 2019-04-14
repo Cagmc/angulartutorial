@@ -14,7 +14,7 @@
   </ul>
 </div>
 
-<div *ngIf="accDetails$ !== undefined | async">
+<div *ngIf="accDetails !== undefined && accDetails !== null">
   <h3>Account Details</h3>
   <table class="table">
     <thead>
@@ -26,19 +26,19 @@
     <tbody>
       <tr>
         <th scope="row">Account Id</th>
-        <td>{{(accDetails$ | async).account_id}}</td>
+        <td>{{accDetails.account_id}}</td>
       </tr>
       <tr>
         <th scope="row">Global rating</th>
-        <td>{{(accDetails$ | async).global_rating}}</td>
+        <td>{{accDetails.global_rating}}</td>
       </tr>
       <tr>
         <th scope="row">Username</th>
-        <td>{{(accDetails$ | async).nickname}}</td>
+        <td>{{accDetails.nickname}}</td>
       </tr>
       <tr>
         <th scope="row">Created at</th>
-        <td>{{(accDetails$ | async).created_at | date:'medium' }}</td>
+        <td>{{accDetails.created_at | date:'medium' }}</td>
       </tr>
     </tbody>
   </table>

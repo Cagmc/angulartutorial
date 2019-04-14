@@ -14,8 +14,6 @@ export const tankReducers = (
             };
         }
         case ETankActions.GetAccountSuccess: {
-            alert(action.payload);
-            console.info(action.payload);
             return {
                 ...state,
                 selectedAccount: action.payload
