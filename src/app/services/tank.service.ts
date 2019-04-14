@@ -24,19 +24,22 @@ export class TankService {
 
     const options = { params };
 
-    return this.http.get<QueryResponse<Account[]>>(baseUrl + 'account/list/', options)
-      .pipe(tap(result => console.log(result)));
+    return this.http.get<QueryResponse<Account[]>>(baseUrl + 'account/list/', options);
+    // .pipe(tap(result => console.log(result)));
   }
 
   getAccountDetails(accountId: number): Observable<QueryResponse<AccountDetails>> {
+    console.info(accountId);
     const params = new HttpParams()
       .set('application_id', applicationId)
       .set('account_id', accountId.toString());
 
     const options = { params };
 
-    return this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options)
-      .pipe(tap(result => console.log(result)));
+    this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options)
+      .subscribe(r => console.info(r));
+
+    return this.http.get<QueryResponse<AccountDetails>>(baseUrl + 'account/info/', options);
   }
 
   getTanks(accountId: number): Observable<QueryResponse<any>> {

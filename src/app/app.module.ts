@@ -18,6 +18,7 @@ import { TankopediaComponent } from './tank-components/tankopedia/tankopedia.com
 import { TankDetailsComponent } from './tank-components/tank-details/tank-details.component';
 import { TankGunDetailsComponent } from './tank-components/tank-gun-details/tank-gun-details.component';
 import { TankModuleDetailsComponent } from './tank-components/tank-module-details/tank-module-details.component';
+import { TankService } from '../app/services/tank.service';
 
 import { MasteryLevelPipe } from './pipes/mastery-level.pipe';
 import { UserService } from './services/user.service';
@@ -25,6 +26,7 @@ import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/reducers/app.reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { UserEffects } from './store/effects/user.effects';
+import { TankEffects } from './store/effects/tank.effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { UsersComponent as UsersContainerComponent } from './containers/users/users.component';
 import { UsersComponent } from './components/users/users.component';
@@ -56,13 +58,13 @@ import { UserDetailsComponent } from './components/user-details/user-details.com
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
-    EffectsModule.forRoot([UserEffects]),
+    EffectsModule.forRoot([UserEffects, TankEffects]),
     StoreRouterConnectingModule.forRoot({ stateKey: 'router' })
     /*HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     )*/
   ],
-  providers: [UserService],
+  providers: [UserService, TankService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

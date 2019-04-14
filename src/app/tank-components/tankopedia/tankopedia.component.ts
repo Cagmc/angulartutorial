@@ -8,6 +8,11 @@ import { Account } from '../../models/tank-models/account.interface';
 import { AccountDetails } from '../../models/tank-models/account-details.interface';
 import { Tank } from '../../models/tank-models/tank.interface';
 
+import { IAppState } from '../../store/state/app.state';
+import { Store, select } from '@ngrx/store';
+import { GetAccounts, GetAccount } from '../../store/actions/tank.actions';
+import { selectSelectedAccount } from '../../store/selectors/tank.selector';
+
 @Component({
   selector: 'app-tankopedia',
   templateUrl: './tankopedia.component.html',
@@ -15,11 +20,13 @@ import { Tank } from '../../models/tank-models/tank.interface';
 })
 export class TankopediaComponent implements OnInit {
   accounts$: Observable<Account[]>;
-  accDetails: AccountDetails;
+  accDetails$: Observable<AccountDetails> = this.store.pipe(select(selectSelectedAccount));
   tanks: Tank[];
+  accountId: number;
   private searchTerms = new Subject<string>();
 
   constructor(
+    private store: Store<IAppState>,
     private http: HttpClient,
     private tankService: TankService) { }
 
@@ -40,7 +47,10 @@ export class TankopediaComponent implements OnInit {
   }
 
   downloadAccountDetails(accountId: number): void {
-    this.tankService.getAccountDetails(accountId).subscribe(x => this.accDetails = x.data[accountId]);
+    this.accountId = accountId;
+    // this.tankService.getAccountDetails(accountId).subscribe(x => this.accDetails = x.data[accountId]);
+    this.store.dispatch(new GetAccount(accountId));
+    // this.store.pipe(select(selectSelectedAccount)).subscribe(result => this.accDetails = result[accountId]);
     this.tankService.getTanks(accountId).subscribe(x => this.tanks = x.data[accountId]);
   }
 

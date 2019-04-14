@@ -8,13 +8,13 @@
 
   <ul class="list-group">
     <li *ngFor="let account of accounts$ | async" class="list-group-item">
-        <span class="badge">{{account.account_id}}</span> {{account.nickname}}
-        <button (click)="downloadAccountDetails(account.account_id)" class="btn btn-primary">Details</button>
+      <span class="badge">{{account.account_id}}</span> {{account.nickname}}
+      <button (click)="downloadAccountDetails(account.account_id)" class="btn btn-primary">Details</button>
     </li>
   </ul>
 </div>
 
-<div *ngIf="accDetails !== undefined">
+<div *ngIf="accDetails$ !== undefined | async">
   <h3>Account Details</h3>
   <table class="table">
     <thead>
@@ -26,19 +26,19 @@
     <tbody>
       <tr>
         <th scope="row">Account Id</th>
-        <td>{{accDetails.account_id}}</td>
+        <td>{{(accDetails$ | async).account_id}}</td>
       </tr>
       <tr>
         <th scope="row">Global rating</th>
-        <td>{{accDetails.global_rating}}</td>
+        <td>{{(accDetails$ | async).global_rating}}</td>
       </tr>
       <tr>
         <th scope="row">Username</th>
-        <td>{{accDetails.nickname}}</td>
+        <td>{{(accDetails$ | async).nickname}}</td>
       </tr>
       <tr>
         <th scope="row">Created at</th>
-        <td>{{accDetails.created_at | date:'medium' }}</td>
+        <td>{{(accDetails$ | async).created_at | date:'medium' }}</td>
       </tr>
     </tbody>
   </table>
@@ -48,10 +48,10 @@
   <h3>Tank list</h3>
   <ul class="list-group">
     <li *ngFor="let tank of tanks" class="list-group-item">
-        <a routerLink="/tank/{{tank.tank_id}}">
-          Id: {{tank.tank_id}}
-        </a>
-        Mark of mastery level: {{tank.mark_of_mastery | masteryLevel }}
+      <a routerLink="/tank/{{tank.tank_id}}">
+        Id: {{tank.tank_id}}
+      </a>
+      Mark of mastery level: {{tank.mark_of_mastery | masteryLevel }}
     </li>
   </ul>
 </div>
