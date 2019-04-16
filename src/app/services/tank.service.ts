@@ -7,6 +7,8 @@ import { AccountDetails } from '../models/tank-models/account-details.interface'
 import { Account } from '../models/tank-models/account.interface';
 import { Tank } from '../models/tank-models/tank.interface';
 import { TankDetails } from '../models/tank-models/tank-details.interface';
+import { ModuleDetails } from '../models/tank-models/module-details.interface';
+import { GetModuleDetails } from '../models/tank-models/get-module-details.interface';
 
 const applicationId = '28d8ac42be14e9cfec30e8d56b33c632';
 const baseUrl = 'https://api.worldoftanks.eu/wot/';
@@ -62,19 +64,15 @@ export class TankService {
       .pipe(map(response => response.data[id]));
   }
 
-  getModuleDetails(id: number, type: string): Observable<QueryResponse<any>> {
+  getModuleDetails(param: GetModuleDetails): Observable<ModuleDetails> {
     const params = new HttpParams()
       .set('application_id', applicationId)
-      .set('module_id', id.toString())
-      .set('type', type);
+      .set('module_id', param.moduleId.toString())
+      .set('type', param.moduleType);
 
     const options = { params };
 
     return this.http.get<QueryResponse<any>>(baseUrl + 'encyclopedia/modules/', options)
-      .pipe(tap(result => console.log(result)));
+      .pipe(map(response => response.data[param.moduleId]));
   }
-}
-
-export class Lolz {
-
 }

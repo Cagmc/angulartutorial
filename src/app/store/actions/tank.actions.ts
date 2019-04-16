@@ -19,6 +19,8 @@ export enum ETankActions {
     GetTankSuccess = '[Tank] Get Tank Success',
     GetGuns = '[Tank] Get Guns',
     GetGunsSuccess = '[Tank] Get Guns Success',
+    GetModule = '[Tank] Get Module',
+    GetModuleSuccess = '[Tank] Get Module Success',
 }
 
 export class GetAccounts implements Action {
@@ -71,9 +73,20 @@ export class GetGunsSuccess implements Action {
     constructor(public payload: ModuleDetails[]) { }
 }
 
+export class GetModule implements Action {
+    public readonly type = ETankActions.GetModule;
+    constructor(public payload: GetModuleDetails) { }
+}
+
+export class GetModuleSuccess implements Action {
+    public readonly type = ETankActions.GetModuleSuccess;
+    constructor(public payload: ModuleDetails) { }
+}
+
 export type TankActions =
     GetAccounts | GetAccountsSuccess |
     GetAccount | GetAccountSuccess |
     GetTanks | GetTanksSuccess |
     GetTank | GetTankSuccess |
-    GetGuns | GetGunsSuccess;
+    GetGuns | GetGunsSuccess |
+    GetModule | GetModuleSuccess;

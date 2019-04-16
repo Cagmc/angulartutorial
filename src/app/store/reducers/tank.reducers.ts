@@ -37,6 +37,12 @@ export const tankReducers = (
                 guns: action.payload
             };
         }
+        case ETankActions.GetModuleSuccess: {
+            return {
+                ...state,
+                selectedModule: action.payload
+            };
+        }
         default:
             return state;
     }

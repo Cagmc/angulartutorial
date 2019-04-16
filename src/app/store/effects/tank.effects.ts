@@ -16,7 +16,9 @@ import {
     GetTank,
     GetTankSuccess,
     GetTanks,
-    GetTanksSuccess
+    GetTanksSuccess,
+    GetModule,
+    GetModuleSuccess
 } from '../actions/tank.actions';
 import { TankService } from '../../services/tank.service';
 import { QueryResponse } from '../../models/tank-models/query-response.interface';
@@ -30,6 +32,7 @@ import {
     selectSelectedAccount,
 } from '../selectors/tank.selector';
 import { TankDetails } from 'src/app/models/tank-models/tank-details.interface';
+import { ModuleDetails } from 'src/app/models/tank-models/module-details.interface';
 
 @Injectable()
 export class TankEffects {
@@ -63,6 +66,14 @@ export class TankEffects {
         map(action => action.payload),
         switchMap((filter) => this.tankService.getTankDetails(filter)),
         switchMap((tank: TankDetails) => of(new GetTankSuccess(tank)))
+    );
+
+    @Effect()
+    getModuleDetails$ = this.actions$.pipe(
+        ofType<GetModule>(ETankActions.GetModule),
+        map(action => action.payload),
+        switchMap((filter) => this.tankService.getModuleDetails(filter)),
+        switchMap((module: ModuleDetails) => of(new GetModuleSuccess(module)))
     );
 
     constructor(

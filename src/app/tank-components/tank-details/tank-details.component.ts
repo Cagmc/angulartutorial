@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 
 import { IAppState } from '../../store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { catchError, map, tap } from 'rxjs/operators';
 
 import { GetTank } from '../../store/actions/tank.actions';
 import { selectSelectedTank } from '../../store/selectors/tank.selector';
@@ -38,13 +37,10 @@ export class TankDetailsComponent implements OnInit {
 
     this.store.dispatch(new GetTank(this.id));
     this.store.pipe(select(selectSelectedTank))
-      .subscribe((result) => { this.tankDetails = result; });
-  }
-
-  onDownloaded(result: TankDetails) {
-    console.log(result);
-    this.tankDetails = result;
-    this.totalPrice = this.tankDetails.price_credit;
+      .subscribe((result) => {
+        this.tankDetails = result;
+        if (this.tankDetails !== null) { this.totalPrice = this.tankDetails.price_credit; }
+      });
   }
 
   onSelected(selectedModule: ModuleDetails) {

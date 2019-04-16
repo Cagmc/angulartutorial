@@ -12,6 +12,7 @@ export interface ITankState {
     tanks: Tank[];
     selectedTank: TankDetails;
     guns: ModuleDetails[];
+    selectedModule: ModuleDetails;
 }
 
 export const initialTankState: ITankState = {
@@ -19,5 +20,6 @@ export const initialTankState: ITankState = {
     selectedAccount: null,
     tanks: null,
     selectedTank: null,
-    guns: null
+    guns: null,
+    selectedModule: null
 };

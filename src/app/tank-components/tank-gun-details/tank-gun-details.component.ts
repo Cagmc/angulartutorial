@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { TankService } from '../../services/tank.service';
 import { GunDetails } from '../../models/tank-models/gun-details.interface';
+import { GetModuleDetails } from 'src/app/models/tank-models/get-module-details.interface';
 
 @Component({
   selector: 'app-tank-gun-details',
@@ -27,7 +28,8 @@ export class TankGunDetailsComponent implements OnInit {
       this.id = +this.route.snapshot.paramMap.get('id');
       this.isPage = true;
     }
-    this.tankService.getModuleDetails(this.id, 'vehicleGun').subscribe(x => this.gunDetails = x.data[this.id]);
+
+    this.tankService.getModuleDetails(new GetModuleDetails(this.id, 'vehicleGun')).subscribe(x => this.gunDetails = x);
   }
 
 }

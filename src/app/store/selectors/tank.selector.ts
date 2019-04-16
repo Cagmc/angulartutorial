@@ -29,3 +29,8 @@ export const selectGunList = createSelector(
     selectTanks,
     (state: ITankState) => state.guns
 );
+
+export const selectSelectedModule = createSelector(
+    selectTanks,
+    (state: ITankState) => state.selectedModule
+);
