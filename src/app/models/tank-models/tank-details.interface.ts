@@ -1,6 +1,6 @@
-import { TankImage } from './tank-image.interface';
+import { ITankImage } from './tank-image.interface';
 
-export interface TankDetails {
+export interface ITankDetails {
     name: string;
     nation: string;
     tier: number;
@@ -14,5 +14,5 @@ export interface TankDetails {
     engines: Array<number>[];
     guns: Array<number>[];
     turrets: Array<number>[];
-    images: TankImage;
+    images: ITankImage;
 }

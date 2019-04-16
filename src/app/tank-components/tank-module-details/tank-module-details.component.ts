@@ -6,9 +6,9 @@ import { Store, select } from '@ngrx/store';
 import { selectSelectedModule } from '../../store/selectors/tank.selector';
 
 import { TankService } from '../../services/tank.service';
-import { ModuleDetails } from '../../models/tank-models/module-details.interface';
+import { IModuleDetails } from '../../models/tank-models/module-details.interface';
 import { GetModule } from 'src/app/store/actions/tank.actions';
-import { GetModuleDetails } from '../../models/tank-models/get-module-details.interface';
+import { GetModuleDetails } from '../../models/tank-models/get-module-details';
 
 @Component({
   selector: 'app-tank-module-details',
@@ -18,8 +18,8 @@ import { GetModuleDetails } from '../../models/tank-models/get-module-details.in
 export class TankModuleDetailsComponent implements OnInit {
   @Input() id: number;
   @Input() type: string;
-  @Output() selected = new EventEmitter<ModuleDetails>();
-  moduleDetails: ModuleDetails;
+  @Output() selected = new EventEmitter<IModuleDetails>();
+  moduleDetails: IModuleDetails;
   isPage: boolean;
 
   constructor(

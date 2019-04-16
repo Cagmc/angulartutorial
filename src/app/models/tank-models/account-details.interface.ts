@@ -1,4 +1,4 @@
-export interface AccountDetails {
+export interface IAccountDetails {
     account_id: number;
     global_rating: number;
     nickname: string;

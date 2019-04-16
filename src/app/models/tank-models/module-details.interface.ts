@@ -1,4 +1,4 @@
-export interface ModuleDetails {
+export interface IModuleDetails {
     name: string;
     price_credit: number;
     nation: string;

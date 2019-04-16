@@ -1,12 +1,11 @@
 import { Action } from '@ngrx/store';
 
-import { QueryResponse } from '../../models/tank-models/query-response.interface';
-import { AccountDetails } from '../../models/tank-models/account-details.interface';
-import { Account } from '../../models/tank-models/account.interface';
-import { GetModuleDetails } from '../../models/tank-models/get-module-details.interface';
-import { ModuleDetails } from 'src/app/models/tank-models/module-details.interface';
-import { Tank } from '../../models/tank-models/tank.interface';
-import { TankDetails } from '../../models/tank-models/tank-details.interface';
+import { IAccountDetails } from '../../models/tank-models/account-details.interface';
+import { IAccount } from '../../models/tank-models/account.interface';
+import { GetModuleDetails } from '../../models/tank-models/get-module-details';
+import { IModuleDetails } from 'src/app/models/tank-models/module-details.interface';
+import { ITank } from '../../models/tank-models/tank.interface';
+import { ITankDetails } from '../../models/tank-models/tank-details.interface';
 
 export enum ETankActions {
     GetAccounts = '[Tank] Get Accounts',
@@ -30,7 +29,7 @@ export class GetAccounts implements Action {
 
 export class GetAccountsSuccess implements Action {
     public readonly type = ETankActions.GetAccountsSuccess;
-    constructor(public payload: Account[]) { }
+    constructor(public payload: IAccount[]) { }
 }
 
 export class GetAccount implements Action {
@@ -40,7 +39,7 @@ export class GetAccount implements Action {
 
 export class GetAccountSuccess implements Action {
     public readonly type = ETankActions.GetAccountSuccess;
-    constructor(public payload: AccountDetails) { }
+    constructor(public payload: IAccountDetails) { }
 }
 
 export class GetTanks implements Action {
@@ -50,7 +49,7 @@ export class GetTanks implements Action {
 
 export class GetTanksSuccess implements Action {
     public readonly type = ETankActions.GetTanksSuccess;
-    constructor(public payload: Tank[]) { }
+    constructor(public payload: ITank[]) { }
 }
 
 export class GetTank implements Action {
@@ -60,7 +59,7 @@ export class GetTank implements Action {
 
 export class GetTankSuccess implements Action {
     public readonly type = ETankActions.GetTankSuccess;
-    constructor(public payload: TankDetails) { }
+    constructor(public payload: ITankDetails) { }
 }
 
 export class GetGuns implements Action {
@@ -70,7 +69,7 @@ export class GetGuns implements Action {
 
 export class GetGunsSuccess implements Action {
     public readonly type = ETankActions.GetGunsSuccess;
-    constructor(public payload: ModuleDetails[]) { }
+    constructor(public payload: IModuleDetails[]) { }
 }
 
 export class GetModule implements Action {
@@ -80,7 +79,7 @@ export class GetModule implements Action {
 
 export class GetModuleSuccess implements Action {
     public readonly type = ETankActions.GetModuleSuccess;
-    constructor(public payload: ModuleDetails) { }
+    constructor(public payload: IModuleDetails) { }
 }
 
 export type TankActions =

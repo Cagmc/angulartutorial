@@ -1,7 +1,7 @@
-import { ListMeta } from './list-meta.interface';
+import { IListMeta } from './list-meta.interface';
 
-export interface QueryResponse<T> {
+export interface IQueryResponse<T> {
     status: string;
-    meta: ListMeta;
+    meta: IListMeta;
     data: T;
 }

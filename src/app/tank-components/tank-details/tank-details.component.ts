@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { IAppState } from '../../store/state/app.state';
@@ -7,8 +7,8 @@ import { Store, select } from '@ngrx/store';
 import { GetTank } from '../../store/actions/tank.actions';
 import { selectSelectedTank } from '../../store/selectors/tank.selector';
 import { TankService } from '../../services/tank.service';
-import { ModuleDetails } from '../../models/tank-models/module-details.interface';
-import { TankDetails } from '../../models/tank-models/tank-details.interface';
+import { IModuleDetails } from '../../models/tank-models/module-details.interface';
+import { ITankDetails } from '../../models/tank-models/tank-details.interface';
 
 @Component({
   selector: 'app-tank-details',
@@ -16,9 +16,9 @@ import { TankDetails } from '../../models/tank-models/tank-details.interface';
   styleUrls: ['./tank-details.component.scss']
 })
 export class TankDetailsComponent implements OnInit {
-  tankDetails: TankDetails = null;
+  tankDetails: ITankDetails = null;
   id: number;
-  selectedModules: Array<ModuleDetails> = new Array<ModuleDetails>();
+  selectedModules: Array<IModuleDetails> = new Array<IModuleDetails>();
   totalPrice: number;
 
   displaySection: Array<boolean> = new Array<boolean>();
@@ -43,7 +43,7 @@ export class TankDetailsComponent implements OnInit {
       });
   }
 
-  onSelected(selectedModule: ModuleDetails) {
+  onSelected(selectedModule: IModuleDetails) {
     const sm = this.selectedModules.find(x => x.type === selectedModule.type);
 
     if (sm === undefined) {

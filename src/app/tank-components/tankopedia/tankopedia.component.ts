@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { TankService } from '../../services/tank.service';
-import { Account } from '../../models/tank-models/account.interface';
-import { AccountDetails } from '../../models/tank-models/account-details.interface';
-import { Tank } from '../../models/tank-models/tank.interface';
+import { IAccount } from '../../models/tank-models/account.interface';
+import { IAccountDetails } from '../../models/tank-models/account-details.interface';
+import { ITank } from '../../models/tank-models/tank.interface';
 
 import { IAppState } from '../../store/state/app.state';
 import { Store, select } from '@ngrx/store';
-import { GetAccounts, GetAccount, GetTanks } from '../../store/actions/tank.actions';
+import { GetAccount, GetTanks } from '../../store/actions/tank.actions';
 import { selectSelectedAccount, selectTankList } from '../../store/selectors/tank.selector';
 
 @Component({
@@ -19,9 +19,9 @@ import { selectSelectedAccount, selectTankList } from '../../store/selectors/tan
   styleUrls: ['./tankopedia.component.scss']
 })
 export class TankopediaComponent implements OnInit {
-  accounts$: Observable<Account[]>;
-  accDetails: AccountDetails;
-  tanks: Tank[];
+  accounts$: Observable<IAccount[]>;
+  accDetails: IAccountDetails;
+  tanks: ITank[];
   private searchTerms = new Subject<string>();
 
   constructor(

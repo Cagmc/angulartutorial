@@ -1,4 +1,4 @@
-export interface GunDetails {
+export interface IGunDetails {
     name: string;
     price_credit: number;
     nation: string;

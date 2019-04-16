@@ -1,3 +1,3 @@
-export interface ListMeta {
+export interface IListMeta {
   count: number;
 }

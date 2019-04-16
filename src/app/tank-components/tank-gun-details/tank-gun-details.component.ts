@@ -2,8 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { TankService } from '../../services/tank.service';
-import { GunDetails } from '../../models/tank-models/gun-details.interface';
-import { GetModuleDetails } from 'src/app/models/tank-models/get-module-details.interface';
+import { IGunDetails } from '../../models/tank-models/gun-details.interface';
+import { GetModuleDetails } from 'src/app/models/tank-models/get-module-details';
 
 @Component({
   selector: 'app-tank-gun-details',
@@ -12,7 +12,7 @@ import { GetModuleDetails } from 'src/app/models/tank-models/get-module-details.
 })
 export class TankGunDetailsComponent implements OnInit {
   @Input() id: number;
-  gunDetails: GunDetails;
+  gunDetails: IGunDetails;
   isPage: boolean;
 
   constructor(
