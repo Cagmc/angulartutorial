@@ -3,6 +3,7 @@
 1. Azure deployment
 2. Bootstrap 4 JS
 3. Redux, Flux
+4. HMR
 
 # Links
 
@@ -14,3 +15,4 @@
 * WoT API: https://developers.wargaming.net/reference/all/wot/account/list/?application_id=key&r_realm=eu
 * Redux: https://medium.com/frontend-fun/angular-ngrx-a-clean-and-clear-introduction-4ed61c89c1fc
 * Redux github: https://github.com/SantiagoGdaR/angular-ngrx
+* HMR: https://codinglatte.com/posts/angular/enabling-hot-module-replacement-angular-6/
